@@ -1,0 +1,1 @@
+C:\Users\Patricia\Documents\GithubRepository\rolling-dice\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\w2n3l5f3\obj\arm64-v8a
