@@ -1,35 +1,16 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class DiceSetUp : MonoBehaviour
 {
     // Prepares the dices selected and the amount of them in the menu
 
     [SerializeField] private TextMeshProUGUI d4_number, d6_number, d8_number, d10_number, d12_number, d20_number;
-    [SerializeField] private Button buttonPlusD4, buttonMinusD4, buttonPlusD6, buttonMinusD6, buttonPlusD8, buttonMinusD8, buttonPlusD10, buttonMinusD10, buttonPlusD12, buttonMinusD12, buttonPlusD20, buttonMinusD20;
-    private int d4, d6, d8, d10, d12, d20 = 0;
+    private int d4 = 0, d6 = 0, d8 = 0, d10 = 0, d12 = 0, d20 = 0;
 
-    private bool isLimitReached= false;
-
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-    }
-
-    void LimitNumbers()
-    {
-        if (d4 >= 5 || d6 >= 5 || d8 >= 5 || d10 >= 5 || d12 >= 5 || d20 >= 5)
-        {
-
-        }
-
-    }
+    [SerializeField] private int AddLimit = 5;
+    private int RemoveLimit = 0;
 
     void CheckNumbers()
     {
@@ -41,20 +22,74 @@ public class DiceSetUp : MonoBehaviour
         d20_number.text = d20.ToString();
     }
 
-
-    //direfernciar que boton va a que numero
     public void Add() 
     {
-        LimitNumbers();
-        if (isLimitReached) return;
+        GameObject button = EventSystem.current.currentSelectedGameObject;
 
-        CheckNumbers();
+        if (button.name == "Button+D4" && d4 < AddLimit)
+        {
+            d4++;
+        }
+        else if (button.name == "Button+D6" && d6 < AddLimit)
+        {
+            d6++;
+        }
+        else if (button.name == "Button+D8" && d8 < AddLimit)
+        {
+            d8++;
+        }
+        else if (button.name == "Button+D10" && d10 < AddLimit)
+        {
+            d10++;
+        }
+        else if (button.name == "Button+D12" && d12 < AddLimit)
+        {
+            d12++;
+        }
+        else if (button.name == "Button+D20" && d20 < AddLimit)
+        {
+            d20++;
+        }
+
+         CheckNumbers();
     }
     public void Remove() 
     {
-        LimitNumbers();
-        if (isLimitReached) return;
+        GameObject button = EventSystem.current.currentSelectedGameObject;
+
+        if (button.name == "Button-D4" && d4 > RemoveLimit)
+        {
+            d4--;
+        }
+        else if (button.name == "Button-D6" && d6 > RemoveLimit)
+        {
+            d6--;
+        }
+        else if (button.name == "Button-D8" && d8 > RemoveLimit)
+        {
+            d8--;
+        }
+        else if (button.name == "Button-D10" && d10 > RemoveLimit)
+        {
+            d10--;
+        }
+        else if (button.name == "Button-D12" && d12 > RemoveLimit)
+        {
+            d12--;
+        }
+        else if (button.name == "Button-D20" && d20 > RemoveLimit)
+        {
+            d20--;
+        }
+
         CheckNumbers();
     }
-    
+
+    public int GetD4() { return d4; }
+    public int GetD6() { return d6; }
+    public int GetD8() { return d8; }
+    public int GetD10() { return d10; }
+    public int GetD12() { return d12; }
+    public int GetD20() { return d20; }
+
 }
