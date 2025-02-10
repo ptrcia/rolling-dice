@@ -64,4 +64,5 @@ public class SetDices : MonoBehaviour
             spawnIndex = (spawnIndex + 1) % spawnPoints.Length;
         }
     }
+
 }

@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RollDices : MonoBehaviour
@@ -8,44 +8,54 @@ public class RollDices : MonoBehaviour
     private GameObject[] dices;
     Rigidbody rb;
     Vector3 vectorTorque;
-    int x, y, z;
 
 
-    public bool hasRolled;
+    float isSimulatedValue;
 
+    [SerializeField] SelectDice selectDice;
+    [SerializeField] NoSimulatedRoll noSimulatedRoll;
+
+    List<GameObject> selectedDices = new List<GameObject>();
+    List<GameObject> unSelectedDices = new List<GameObject>();
 
     void Start()
     {
         selectedOption = PlayerPrefs.GetString("selectedOption");
         Debug.Log("Selected Option: " + selectedOption);
 
-        dices = GameObject.FindGameObjectsWithTag("Dice");
-        x = RandomVector();
-        y = RandomVector();
-        z = RandomVector();
-        vectorTorque = new Vector3(x, y, z);
+        isSimulatedValue = PlayerPrefs.GetInt("isSimulated");
 
-        //if (selectedOption == "Tap Roll") TapRoll();
-        if (selectedOption == "Auto Roll") AutoRoll();
-        if (selectedOption == "Shake Roll") ShakeRoll();
+        dices = GameObject.FindGameObjectsWithTag("Dice");
+
+        CheckIfSimulated();
     }
 
-    private void Update()
+    void CheckIfSimulated()
     {
-        if (selectedOption == "Tap Roll" && Input.GetMouseButtonDown(0))
+        if (isSimulatedValue == 0) //we have to calculate and show the result
         {
-            TapRoll();
+            noSimulatedRoll.CalculateResults();
+        }
+        else
+        {
+            if (selectedOption == "Auto Roll") AutoRoll();
+            if (selectedOption == "Shake Roll") ShakeRoll();
+        }
+    }
+
+    public void ReRoll()
+    {
+        if (isSimulatedValue == 0) //we have to calculate and show the result
+        {
+            noSimulatedRoll.CalculateResults();
+        }
+        else
+        {
+            Roll();
         }
     }
 
 
-    void TapRoll()
-    {
-        Roll();
-        
-        // Roll the dices when the user taps the screen
-        
-    }
     void AutoRoll()
     {
         // Roll the dices automatically
@@ -58,62 +68,55 @@ public class RollDices : MonoBehaviour
 
     public void Roll()
     {
+        selectedDices = selectDice.GetTargets();
+
         int resultRandomForce = RandomForce();
         int resultRandomNumberofAxis = RandomNumberOfAxis();
+        vectorTorque = new Vector3(RandomVector(), RandomVector(), RandomVector());
 
-        /*if (resultRandomNumberofAxis >= 1 && resultRandomNumberofAxis <= 100) //0.6% chances 100
+
+        if (selectedDices.Count > 0)  //if there are selected dices
         {
-            int resultValue = Random1Axis();
-            if (resultValue == 1)
+            foreach (GameObject dice in dices) //get the unselected dices and make them kinematic
             {
-                vectorTorque = new Vector3(x, 0, z);
+                if (!selectedDices.Contains(dice))
+                {
+                    unSelectedDices.Add(dice);
+                    rb = dice.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.isKinematic = true;
+                    }
+                }
             }
-            else if (resultValue == 2)
+
+            foreach (GameObject dice in selectedDices) //roll the selected dices and roll them
             {
-                vectorTorque = new Vector3(x, y, 0);
-            }
-            else if (resultValue == 3)
-            {
-                vectorTorque = new Vector3(0, y, z);
+                rb = dice.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.isKinematic = false;
+                    rb.AddForce(Vector3.up * RandomForce(), ForceMode.Impulse);
+                    rb.AddTorque(new Vector3(RandomVector(), RandomVector(), RandomVector()) * RandomForce(), ForceMode.Impulse);
+                }
             }
         }
-        else if (resultRandomNumberofAxis >= 100 && resultRandomNumberofAxis <= 1000) //90% chances 1000
+        else
         {
-            vectorTorque = new Vector3(x, y, z);
-        }*/
+            foreach (GameObject dice in dices) //roll all dices
+            {
+                rb = dice.GetComponent<Rigidbody>();
+                rb.AddForce(Vector3.up * resultRandomForce, ForceMode.Impulse);
+                rb.AddTorque(vectorTorque * resultRandomForce, ForceMode.Impulse);
 
-
-        foreach (GameObject dice in dices)
-        {
-            rb = dice.GetComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * resultRandomForce, ForceMode.Impulse);
-            rb.AddTorque(vectorTorque * resultRandomForce, ForceMode.Impulse);
-
+            }
         }
+
     }
 
-    int Random1Axis()
-    {
-        int randomnumber;
-        randomnumber = Random.Range(1, 4);
-        return randomnumber;
-    }
-    int RandomNumberOfAxis()
-    {
-        int randomnumber;
-        randomnumber = Random.Range(1, 1001);
-        return randomnumber;
-    }
-    int RandomForce()
-    {
-        int randomnumber;
-        randomnumber = Random.Range(3, 10);
-        return randomnumber;
-    }
-    int RandomVector()
-    {
-        int randomnumber;
-        randomnumber = Random.Range(-1, 2);
-        return randomnumber;
-    }
+    #region Random Values
+    int RandomNumberOfAxis() {return Random.Range(1, 1001);}
+    int RandomForce() {return Random.Range(3, 10);}
+    int RandomVector() {return Random.Range(-1, 2);}
+    #endregion
 }

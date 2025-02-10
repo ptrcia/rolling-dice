@@ -6,7 +6,7 @@ using UnityEngine;
 public class GetValueDropdown : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown dropdown;
-    [SerializeField] string selectedOption = "Tap Roll";
+    [SerializeField] string selectedOption;
 
     public void GetDropdownValue()
     {
@@ -15,8 +15,6 @@ public class GetValueDropdown : MonoBehaviour
         PlayerPrefs.SetString("selectedOption", selectedOption);
         Debug.Log(selectedOption);
     }
-    public string GetSelectedOption()
-    {
-        return selectedOption;
-    }
+    public string GetSelectedOption() { return selectedOption; }
+
 }
