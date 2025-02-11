@@ -9,7 +9,6 @@ public class RollDices : MonoBehaviour
     Rigidbody rb;
     Vector3 vectorTorque;
 
-
     float isSimulatedValue;
 
     [SerializeField] SelectDice selectDice;
@@ -26,6 +25,8 @@ public class RollDices : MonoBehaviour
         isSimulatedValue = PlayerPrefs.GetInt("isSimulated");
 
         dices = GameObject.FindGameObjectsWithTag("Dice");
+
+        
 
         CheckIfSimulated();
     }
@@ -64,6 +65,8 @@ public class RollDices : MonoBehaviour
     void ShakeRoll()
     {
         // Roll the dices when the user shakes the device
+        Accelerometer.Instance.OnShake += ReRoll;
+        Debug.Log("Shaking-------------");
     }
 
     public void Roll()
@@ -72,7 +75,7 @@ public class RollDices : MonoBehaviour
 
         int resultRandomForce = RandomForce();
         int resultRandomNumberofAxis = RandomNumberOfAxis();
-        vectorTorque = new Vector3(RandomVector(), RandomVector(), RandomVector());
+        vectorTorque = RandomVector();
 
 
         if (selectedDices.Count > 0)  //if there are selected dices
@@ -97,7 +100,7 @@ public class RollDices : MonoBehaviour
                 {
                     rb.isKinematic = false;
                     rb.AddForce(Vector3.up * RandomForce(), ForceMode.Impulse);
-                    rb.AddTorque(new Vector3(RandomVector(), RandomVector(), RandomVector()) * RandomForce(), ForceMode.Impulse);
+                    rb.AddTorque(RandomVector() * RandomForce(), ForceMode.Impulse);
                 }
             }
         }
@@ -117,6 +120,15 @@ public class RollDices : MonoBehaviour
     #region Random Values
     int RandomNumberOfAxis() {return Random.Range(1, 1001);}
     int RandomForce() {return Random.Range(3, 10);}
-    int RandomVector() {return Random.Range(-1, 2);}
+    //int RandomVector() {return Random.Range(-1, 2);}
+    Vector3 RandomVector()
+    {
+        Vector3 randomVector;
+        do
+        {
+            randomVector = new Vector3(Random.Range(-1, 2), Random.Range(-1, 2), Random.Range(-1, 2));
+        } while (randomVector == Vector3.zero);
+        return randomVector;
+    }
     #endregion
 }
