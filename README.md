@@ -43,3 +43,7 @@ https://icons8.com/icon/set/dice/windows
 ![Dices2](https://ptrcia.github.io/porfolio/images/Dices/dices2.png)
 ![Dices3](https://ptrcia.github.io/porfolio/images/Dices/dices3.png)
 ![Dices4](https://ptrcia.github.io/porfolio/images/Dices/dices4.png)
+![Dices5](https://ptrcia.github.io/porfolio/images/Dices/dices5.png)
+![Dices6](https://ptrcia.github.io/porfolio/images/Dices/dices6.png)
+![Dices7](https://ptrcia.github.io/porfolio/images/Dices/dices7.png)
+![Dices8](https://ptrcia.github.io/porfolio/images/Dices/dices8.png)
