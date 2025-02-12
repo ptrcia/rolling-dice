@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class RollDices : MonoBehaviour
 {
-    private string selectedOption;
+    private int autoRoll;
+    private int shakeRoll;
 
     private GameObject[] dices;
     Rigidbody rb;
@@ -19,14 +20,11 @@ public class RollDices : MonoBehaviour
 
     void Start()
     {
-        selectedOption = PlayerPrefs.GetString("selectedOption");
-        Debug.Log("Selected Option: " + selectedOption);
-
         isSimulatedValue = PlayerPrefs.GetInt("isSimulated");
+        autoRoll = PlayerPrefs.GetInt("isAuto");
+        shakeRoll = PlayerPrefs.GetInt("isShake");
 
         dices = GameObject.FindGameObjectsWithTag("Dice");
-
-        
 
         CheckIfSimulated();
     }
@@ -39,8 +37,8 @@ public class RollDices : MonoBehaviour
         }
         else
         {
-            if (selectedOption == "Auto Roll") AutoRoll();
-            if (selectedOption == "Shake Roll") ShakeRoll();
+            if(autoRoll == 1) AutoRoll();
+            if (shakeRoll == 1) ShakeRoll();
         }
     }
 
@@ -66,7 +64,6 @@ public class RollDices : MonoBehaviour
     {
         // Roll the dices when the user shakes the device
         Accelerometer.Instance.OnShake += ReRoll;
-        Debug.Log("Shaking-------------");
     }
 
     public void Roll()
@@ -77,7 +74,7 @@ public class RollDices : MonoBehaviour
         int resultRandomNumberofAxis = RandomNumberOfAxis();
         vectorTorque = RandomVector();
 
-
+        Debug.Log("Selected dices-> " + selectedDices.Count);
         if (selectedDices.Count > 0)  //if there are selected dices
         {
             foreach (GameObject dice in dices) //get the unselected dices and make them kinematic
@@ -104,13 +101,24 @@ public class RollDices : MonoBehaviour
                 }
             }
         }
-        else
+        else //if (selectedDices.Count == 0) //if there are no selected dices
         {
             foreach (GameObject dice in dices) //roll all dices
             {
                 rb = dice.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
                 rb.AddForce(Vector3.up * resultRandomForce, ForceMode.Impulse);
                 rb.AddTorque(vectorTorque * resultRandomForce, ForceMode.Impulse);
+                /*if (rb != null)
+                {
+                    rb = dice.GetComponent<Rigidbody>();
+
+                    rb.isKinematic = false;
+                    //rb.AddForce(Vector3.up * RandomForce(), ForceMode.Impulse);
+                    //rb.AddTorque(RandomVector() * RandomForce(), ForceMode.Impulse);
+                    rb.AddForce(Vector3.up * resultRandomForce, ForceMode.Impulse);
+                    rb.AddTorque(vectorTorque * resultRandomForce, ForceMode.Impulse);
+                }*/
 
             }
         }
@@ -119,8 +127,7 @@ public class RollDices : MonoBehaviour
 
     #region Random Values
     int RandomNumberOfAxis() {return Random.Range(1, 1001);}
-    int RandomForce() {return Random.Range(3, 10);}
-    //int RandomVector() {return Random.Range(-1, 2);}
+    int RandomForce() {return Random.Range(5, 10);}
     Vector3 RandomVector()
     {
         Vector3 randomVector;

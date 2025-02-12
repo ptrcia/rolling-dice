@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using static UnityEngine.UI.CanvasScaler;
 
 public class Customization1 : MonoBehaviour
 {
@@ -26,13 +27,18 @@ public class Customization1 : MonoBehaviour
     List<GameObject> diceD12 = new List<GameObject>();
     List<GameObject> diceD20 = new List<GameObject>();
 
-    private int currentThemeIndexDice = 0;
     int themeDice;
 
     [Header("Icons")]
     [SerializeField] Button buttonIconRoll;
     [SerializeField] Button buttonIconBack;
     [SerializeField] Button buttonIconInfo;
+    [SerializeField] Image dialogue;
+    [SerializeField] Sprite[] iconRoll;
+    [SerializeField] Sprite[] iconBack;
+    [SerializeField] Sprite[] iconInfo;
+    [SerializeField] Sprite[] dialogueSprite;
+    [SerializeField] TextMeshProUGUI text;
 
     private void Start()
     {
@@ -53,6 +59,29 @@ public class Customization1 : MonoBehaviour
 
         FindAllDice();
         SetDiceMaterials(themeDice);
+        Colour(theme);
+    }
+
+    private void Colour(int theme)
+    {
+
+        if (theme == 0)
+        {
+            buttonIconRoll.image.sprite = iconRoll[1];
+            buttonIconBack.image.sprite = iconBack[1];
+            buttonIconInfo.image.sprite = iconInfo[1];
+            dialogue.sprite = dialogueSprite[1];
+            text.color = Color.black;
+
+        }
+        else if (theme == 1 || theme == 3 || theme == 4 || theme == 2)
+        {
+            buttonIconRoll.image.sprite = iconRoll[0];
+            buttonIconBack.image.sprite = iconBack[0];
+            buttonIconInfo.image.sprite = iconInfo[0];
+            dialogue.sprite = dialogueSprite[0];
+            text.color = Color.white;
+        }
     }
 
     private void SetDiceMaterials(int themeIndex)

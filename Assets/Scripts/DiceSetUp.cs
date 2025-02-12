@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.Rendering.DebugUI;
 
 public class DiceSetUp : MonoBehaviour
 {
@@ -11,6 +12,18 @@ public class DiceSetUp : MonoBehaviour
 
     [SerializeField] private int AddLimit = 5;
     private int RemoveLimit = 0;
+
+    private void Start()
+    {
+        d4 = PlayerPrefs.GetInt("d4");
+        d6 = PlayerPrefs.GetInt("d6");
+        d8 = PlayerPrefs.GetInt("d8");
+        d10 = PlayerPrefs.GetInt("d10");
+        d12 = PlayerPrefs.GetInt("d12");
+        d20 = PlayerPrefs.GetInt("d20");
+
+        CheckNumbers();
+    }
 
     void CheckNumbers()
     {

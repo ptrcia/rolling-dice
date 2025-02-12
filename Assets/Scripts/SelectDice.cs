@@ -16,6 +16,7 @@ public class SelectDice : MonoBehaviour
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log("Hit something" + hit.collider.gameObject.name);
                 if (hit.collider.tag == "Dice")
                 {
                     if (!targets.Contains(hit.collider.gameObject))
