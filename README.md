@@ -35,3 +35,11 @@ https://icons8.com/icon/15041/paint-palette
 https://icons8.com/icon/set/dice/windows
 
 [Font](https://fonts.google.com/specimen/Poppins)
+
+## [Photos:]
+
+![Dices0](https://ptrcia.github.io/porfolio/images/Dices/dices0.png)
+![Dices1](https://ptrcia.github.io/porfolio/images/Dices/dices1.png)
+![Dices2](https://ptrcia.github.io/porfolio/images/Dices/dices2.png)
+![Dices3](https://ptrcia.github.io/porfolio/images/Dices/dices3.png)
+![Dices4](https://ptrcia.github.io/porfolio/images/Dices/dices4.png)
