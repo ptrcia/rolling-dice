@@ -3718,7 +3718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -30.129028, y: 27}
+  m_AnchoredPosition: {x: -30.128906, y: 27}
   m_SizeDelta: {x: 121.764, y: 114.437}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &829770075
@@ -5571,7 +5571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30.129028, y: -42.04}
+  m_AnchoredPosition: {x: -30.128906, y: -42.04004}
   m_SizeDelta: {x: 131.87, y: 126.36}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1174190773
@@ -6756,7 +6756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1457615698
 Transform:
   m_ObjectHideFlags: 0
@@ -6786,17 +6786,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img:
   - {fileID: 2100000, guid: 379254eed86ec9641b5195079bee4cb2, type: 2}
-  - {fileID: 2100000, guid: f605756413df6f44a9ef25c75b319bed, type: 2}
   - {fileID: 2100000, guid: 74a6e284d7507964c857b904a40688bf, type: 2}
   - {fileID: 2100000, guid: af408fe756209ff4b9f8d27113a75734, type: 2}
   - {fileID: 2100000, guid: 0515be03db4bdb44897b4711c086b76d, type: 2}
+  - {fileID: 2100000, guid: f605756413df6f44a9ef25c75b319bed, type: 2}
   background: {fileID: 569683726}
-  matD4: []
-  matD6: []
-  matD8: []
-  matD10: []
-  matD12: []
-  matD20: []
+  matD4:
+  - {fileID: 2100000, guid: 1519a38c233cc3b4995a4fda97f4f1a4, type: 2}
+  - {fileID: 2100000, guid: df723998e87143444a29fe4db446dc62, type: 2}
+  - {fileID: 2100000, guid: 98a291be9837b364b9b438af7d03e54e, type: 2}
+  - {fileID: 2100000, guid: 8c1ea301e3f62f34db5d2926fdef5edb, type: 2}
+  - {fileID: 2100000, guid: 894f7a02c1894544493cadaf5fdbc6c6, type: 2}
+  - {fileID: 2100000, guid: f58975f687139e5488f9a44276c9014c, type: 2}
+  - {fileID: 2100000, guid: 701cbb313a885134883f0cbe70b13b5d, type: 2}
+  matD6:
+  - {fileID: 2100000, guid: 0a074f0a61ab0ac4c8fa2d39f5e42305, type: 2}
+  - {fileID: 2100000, guid: 276ad96ad82a9914ba31917ca5b1108a, type: 2}
+  - {fileID: 2100000, guid: 85c3eaf5fb6b0d241b5e30234f4d343e, type: 2}
+  - {fileID: 2100000, guid: be645d50692f26b4085000f919108219, type: 2}
+  - {fileID: 2100000, guid: 28389f732d76abd4cbde663df68ab0c9, type: 2}
+  - {fileID: 2100000, guid: 17ac8dd0ed45c854ea34ca49e2031b90, type: 2}
+  - {fileID: 2100000, guid: d11d17f2bf904fc42a8532b32c4b76d0, type: 2}
+  matD8:
+  - {fileID: 2100000, guid: 26a072e5dd571564189ac98803437db8, type: 2}
+  - {fileID: 2100000, guid: a2c334972549ffa40b5e7b9b84c06bef, type: 2}
+  - {fileID: 2100000, guid: 2eca055d48a6a8349a8faff45e4e1744, type: 2}
+  - {fileID: 2100000, guid: b1d414c03e3441e4c9561c323d8a6225, type: 2}
+  - {fileID: 2100000, guid: 467f2b4a2864b0e4a9d44788f33498c3, type: 2}
+  - {fileID: 2100000, guid: 26a072e5dd571564189ac98803437db8, type: 2}
+  - {fileID: 2100000, guid: 90f81d1c1418c46459a737ba8fb4873c, type: 2}
+  matD10:
+  - {fileID: 2100000, guid: 0dc963bea2d6ce84ba14f1bc033fcfa3, type: 2}
+  - {fileID: 2100000, guid: 4c4a09fa903c9dd46b12db1531e277a5, type: 2}
+  - {fileID: 2100000, guid: 06c3d045629b2134fbf7570b06d7d1c8, type: 2}
+  - {fileID: 2100000, guid: 0f340924208b1794885977d4936d6f0b, type: 2}
+  - {fileID: 2100000, guid: 842d9b99742f9554b9c883554b6dbb0b, type: 2}
+  - {fileID: 2100000, guid: 8828943baf91f144ca6463d6a847e256, type: 2}
+  - {fileID: 2100000, guid: 9109b08592a96bc45af6bada62302d70, type: 2}
+  matD12:
+  - {fileID: 2100000, guid: 7943bbf6a70de20458293026fc0bee76, type: 2}
+  - {fileID: 2100000, guid: 39fc9034ddbacb64d985b29f3423b67e, type: 2}
+  - {fileID: 2100000, guid: 29380460bb0ff3148b69127e5991a0d0, type: 2}
+  - {fileID: 2100000, guid: 35a3c3b78bbf06d4c8fe26f2243334ae, type: 2}
+  - {fileID: 2100000, guid: 5d7fb70fb29b8b14ba5178af5cdbe21d, type: 2}
+  - {fileID: 2100000, guid: 46d2d490dde8764449905a83476c455b, type: 2}
+  - {fileID: 2100000, guid: b896d95ec87d5594ca0f13e94a2cca05, type: 2}
+  matD20:
+  - {fileID: 2100000, guid: 81f8cf9dbdf46af43ac010fc91f4546d, type: 2}
+  - {fileID: 2100000, guid: 57bc790f13a0546489fdf1d60a949c3f, type: 2}
+  - {fileID: 2100000, guid: 3c6c20ab9326c464ab4361d0c7ad4c26, type: 2}
+  - {fileID: 2100000, guid: 4cd03bcb68582734cb6f3e12b0c18416, type: 2}
+  - {fileID: 2100000, guid: c75e656e15413704b841ff8fcd71feab, type: 2}
+  - {fileID: 2100000, guid: 1d150a40c1e5e324fb4f52318e85794c, type: 2}
+  - {fileID: 2100000, guid: b3b5716b5c6a7be43af21077252d8eaf, type: 2}
   buttonIconRoll: {fileID: 829770075}
   buttonIconBack: {fileID: 899425467}
   buttonIconInfo: {fileID: 1174190773}

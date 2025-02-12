@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,11 +43,29 @@ public class Customization : MonoBehaviour
     [SerializeField] TextMeshProUGUI simulated;
     [SerializeField] TextMeshProUGUI RollMode;
 
+
+    private void Start()
+    {
+        // Cargar los valores guardados en PlayerPrefs
+        themeBackground = PlayerPrefs.GetInt("Theme", 0);
+        themeDice = PlayerPrefs.GetInt("ThemeDice", 0);
+
+        // Aplicar el tema de fondo
+        if (themeBackground >= 0 && themeBackground < img.Length)
+        {
+            background.GetComponent<Image>().sprite = img[themeBackground];
+        }
+
+        // Aplicar el tema de los dados
+        ApplyDiceTheme(themeDice);
+
+        Debug.Log($"STARTING Theme: {themeBackground}, ThemeDice: {themeDice}");
+    }
     public void ChangeThemeBackground()
     {
-         if (img.Length == 0) return;
+        if (img.Length == 0) return;
 
-        if(currentThemeIndex >= img.Length - 1)
+        if (currentThemeIndex >= img.Length - 1)
         {
             currentThemeIndex = 0;
         }
@@ -56,15 +75,15 @@ public class Customization : MonoBehaviour
         }
 
         for (int i = 0; i < img.Length; i++)
-         {
-             if (i == currentThemeIndex)
-             {
-                 background.GetComponent<Image>().sprite = img[i];
-                 themeBackground = i;
-                 Debug.Log("Theme: " + themeBackground);
-                 break;
-             }
-         }
+        {
+            if (i == currentThemeIndex)
+            {
+                background.GetComponent<Image>().sprite = img[i];
+                themeBackground = i;
+                Debug.Log("Theme: " + themeBackground);
+                break;
+            }
+        }
 
         PlayerPrefs.SetInt("Theme", themeBackground);
 
@@ -90,13 +109,23 @@ public class Customization : MonoBehaviour
 
         themeDice = currentThemeIndexDice;
         PlayerPrefs.SetInt("ThemeDice", themeDice);
-        Debug.Log($"Applied theme index: {themeDice}");
+        Debug.Log($"Applied theme dice: {themeDice}");
+    }
+    private void ApplyDiceTheme(int themeIndex)
+    {
+        GameObject[] dice = { diceD4, diceD6, diceD8, diceD10, diceD12, diceD20 };
+        Material[][] materials = { matD4, matD6, matD8, matD10, matD12, matD20 };
 
+        for (int i = 0; i < dice.Length; i++)
+        {
+            if (dice[i] != null && materials[i].Length > 0)
+            {
+                dice[i].GetComponent<Renderer>().material = materials[i][themeIndex];
+            }
+        }
     }
 
-    public int GetTheme() { return themeBackground; }
-    public int GetThemeDice() { return themeDice; }
-
-
+    //public int GetTheme() { return themeBackground; }
+    //public int GetThemeDice() { return themeDice; }
 
 }

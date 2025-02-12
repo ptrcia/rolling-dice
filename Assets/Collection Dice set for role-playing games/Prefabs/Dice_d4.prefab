@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4893026551134821837}
   - component: {fileID: 3297568068280851517}
   - component: {fileID: -2473567228012196138}
+  - component: {fileID: -1659503206687301122}
   m_Layer: 0
   m_Name: Dice_d4
   m_TagString: Dice
@@ -156,3 +157,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-1659503206687301122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7775085678995213916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34cf3feaaa18da4c921fcab92554fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceType: 0

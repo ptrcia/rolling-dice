@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -8079117892766918678}
   - component: {fileID: 6536587116723521374}
   - component: {fileID: -1051573438897540322}
+  - component: {fileID: -8652711467995905203}
   m_Layer: 0
   m_Name: Dice_d20
   m_TagString: Dice
@@ -156,3 +157,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-8652711467995905203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496108222292689800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34cf3feaaa18da4c921fcab92554fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceType: 5

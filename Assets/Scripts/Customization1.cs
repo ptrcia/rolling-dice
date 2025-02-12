@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Customization1 : MonoBehaviour
 {
-
     [Header("Background")]
     [SerializeField] Material[] img;
     [SerializeField] GameObject background;
@@ -20,16 +19,7 @@ public class Customization1 : MonoBehaviour
     [SerializeField] Material[] matD12;
     [SerializeField] Material[] matD20;
 
-    //[SerializeField] GameObject[] diceD4;
-    //[SerializeField] GameObject[] diceD6;
-    //[SerializeField] GameObject[] diceD8;
-   // [SerializeField] GameObject[] diceD10;
-    //[SerializeField] GameObject[] diceD12;
-   // [SerializeField] GameObject[] diceD20;
-    int themeDice;
-
-
-    List <GameObject> diceD4 = new List<GameObject>();
+    List<GameObject> diceD4 = new List<GameObject>();
     List<GameObject> diceD6 = new List<GameObject>();
     List<GameObject> diceD8 = new List<GameObject>();
     List<GameObject> diceD10 = new List<GameObject>();
@@ -37,235 +27,97 @@ public class Customization1 : MonoBehaviour
     List<GameObject> diceD20 = new List<GameObject>();
 
     private int currentThemeIndexDice = 0;
-
+    int themeDice;
 
     [Header("Icons")]
     [SerializeField] Button buttonIconRoll;
     [SerializeField] Button buttonIconBack;
     [SerializeField] Button buttonIconInfo;
 
-
     private void Start()
     {
         theme = PlayerPrefs.GetInt("Theme");
         themeDice = PlayerPrefs.GetInt("ThemeDice");
 
-        switch (theme)
+        Debug.Log($"Theme: {theme}, ThemeDice: {themeDice}");
+
+        // Configura el fondo según el tema
+        if (theme >= 0 && theme < img.Length)
         {
-            case 0:
-                background.GetComponent<Renderer>().material = img[0];
-                break;
-            case 1:
-                background.GetComponent<Renderer>().material = img[1];
-                break;
-            case 2:
-                background.GetComponent<Renderer>().material = img[2];
-                break;
-            case 3:
-                background.GetComponent<Renderer>().material = img[3];
-                break;
-            case 4:
-                background.GetComponent<Renderer>().material = img[4];
-                break;
-            case 5:
-                background.GetComponent<Renderer>().material = img[5];
-                break;
-            default:
-                background.GetComponent<Renderer>().material = img[0];
-                break;
+            background.GetComponent<Renderer>().material = img[theme];
+        }
+        else
+        {
+            background.GetComponent<Renderer>().material = img[0];
         }
 
-        //diceD4[0]..material = matD4[themeDice]; //como lo encuentro
-        //diceD4.AddRange(GameObject.FindGameObjectsWithTag("D4"));
-        //diceD6.AddRange(GameObject.Find("Dice_d4(Clone)");
+        FindAllDice();
+        SetDiceMaterials(themeDice);
+    }
 
+    private void SetDiceMaterials(int themeIndex)
+    {
+        //if (themeIndex < 0 || themeIndex >= matD4.Length) themeIndex = 0;
 
-        switch (themeDice)
+        SetMaterialForDice(diceD4, matD4[themeIndex]);
+        SetMaterialForDice(diceD6, matD6[themeIndex]);
+        SetMaterialForDice(diceD8, matD8[themeIndex]);
+        SetMaterialForDice(diceD10, matD10[themeIndex]);
+        SetMaterialForDice(diceD12, matD12[themeIndex]);
+        SetMaterialForDice(diceD20, matD20[themeIndex]);
+    }
+
+    private void SetMaterialForDice(List<GameObject> diceList, Material material)
+    {
+        foreach (var dice in diceList)
         {
-            case 0:
-                for (int i = 0; i < diceD4.Count; i++)
-                {
-                    diceD4[i].GetComponent<Renderer>().material = matD4[0];
-                }
-                for (int i = 0; i < diceD6.Count; i++)
-                {
-                    diceD6[i].GetComponent<Renderer>().material = matD6[0];
-                }
-                for (int i = 0; i < diceD8.Count; i++)
-                {
-                    diceD8[i].GetComponent<Renderer>().material = matD8[0];
-                }
-                for (int i = 0; i < diceD10.Count; i++)
-                {
-                    diceD10[i].GetComponent<Renderer>().material = matD10[0];
-                }
-                for (int i = 0; i < diceD12.Count; i++)
-                {
-                    diceD12[i].GetComponent<Renderer>().material = matD12[0];
-                }
-                for (int i = 0; i < diceD20.Count; i++)
-                {
-                    diceD20[i].GetComponent<Renderer>().material = matD20[0];
-                }
-                break;
-            case 1:
-                for (int i = 0; i < diceD4.Count; i++)
-                {
-                    diceD4[i].GetComponent<Renderer>().material = matD4[1];
-                }
-                for (int i = 0; i < diceD6.Count; i++)
-                {
-                    diceD6[i].GetComponent<Renderer>().material = matD6[1];
-                }
-                for (int i = 0; i < diceD8.Count    ; i++)
-                {
-                    diceD8[i].GetComponent<Renderer>().material = matD8[1];
-                }
-                for (int i = 0; i < diceD10.Count; i++)
-                {
-                    diceD10[i].GetComponent<Renderer>().material = matD10[1];
-                }
-                for (int i = 0; i < diceD12.Count; i++)
-                {
-                    diceD12[i].GetComponent<Renderer>().material = matD12[1];
-                }
-                for (int i = 0; i < diceD20.Count; i++)
-                {
-                    diceD20[i].GetComponent<Renderer>().material = matD20[1];
-                }
-                break;
-            case 2:
-                for (int i = 0; i < diceD4.Count; i++)
-                {
-                    diceD4[i].GetComponent<Renderer>().material = matD4[2];
-                }
-                for (int i = 0; i < diceD6.Count; i++)
-                {
-                    diceD6[i].GetComponent<Renderer>().material = matD6[2];
-                }
-                for (int i = 0; i < diceD8.Count; i++)
-                {
-                    diceD8[i].GetComponent<Renderer>().material = matD8[2];
-                }
-                for (int i = 0; i < diceD10.Count; i++)
-                {
-                    diceD10[i].GetComponent<Renderer>().material = matD10[2];
-                }
-                for (int i = 0; i < diceD12.Count; i++)
-                {
-                    diceD12[i].GetComponent<Renderer>().material = matD12[2];
-                }
-                for (int i = 0; i < diceD20.Count; i++)
-                {
-                    diceD20[i].GetComponent<Renderer>().material = matD20[2];
-                }
-                break;
-            case 3:
-                for (int i = 0; i < diceD4.Count; i++)
-                {
-                    diceD4[i].GetComponent<Renderer>().material = matD4[3];
-                }
-                for (int i = 0; i < diceD6.Count; i++)
-                {
-                    diceD6[i].GetComponent<Renderer>().material = matD6[3];
-                }
-                for (int i = 0; i < diceD8.Count; i++)
-                {
-                    diceD8[i].GetComponent<Renderer>().material = matD8[3];
-                }
-                for (int i = 0; i < diceD10.Count; i++)
-                {
-                    diceD10[i].GetComponent<Renderer>().material = matD10[3];
-                }
-                for (int i = 0; i < diceD12.Count; i++)
-                {
-                    diceD12[i].GetComponent<Renderer>().material = matD12[3];
-                }
-                for (int i = 0; i < diceD20.Count; i++)
-                {
-                    diceD20[i].GetComponent<Renderer>().material = matD20[3];
-                }
-                break;
-            case 4:
-                for (int i = 0; i < diceD4.Count; i++)
-                {
-                    diceD4[i].GetComponent<Renderer>().material = matD4[4];
-                }
-                for (int i = 0; i < diceD6.Count; i++)
-                {
-                    diceD6[i].GetComponent<Renderer>().material = matD6[4];
-                }
-                for (int i = 0; i < diceD8.Count; i++)
-                {
-                    diceD8[i].GetComponent<Renderer>().material = matD8[4];
-                }
-                for (int i = 0; i < diceD10.Count; i++)
-                {
-                    diceD10[i].GetComponent<Renderer>().material = matD10[4];
-                }
-                for (int i = 0; i < diceD12.Count; i++)
-                {
-                    diceD12[i].GetComponent<Renderer>().material = matD12[4];
-                }
-                for (int i = 0; i < diceD20.Count; i++)
-                {
-                    diceD20[i].GetComponent<Renderer>().material = matD20[4];
-                }
-                break;
-            case 5:
-                for (int i = 0; i < diceD4.Count; i++)
-                {
-                    diceD4[i].GetComponent<Renderer>().material = matD4[5];
-                }
-                for (int i = 0; i < diceD6.Count; i++)
-                {
-                    diceD6[i].GetComponent<Renderer>().material = matD6[5];
-                }
-                for (int i = 0; i < diceD8.Count; i++)
-                {
-                    diceD8[i].GetComponent<Renderer>().material = matD8[5];
-                }
-                for (int i = 0; i < diceD10.Count; i++)
-                {
-                    diceD10[i].GetComponent<Renderer>().material = matD10[5];
-                }
-                for (int i = 0; i < diceD12.Count; i++)
-                {
-                    diceD12[i].GetComponent<Renderer>().material = matD12[5];
-                }
-                for (int i = 0; i < diceD20.Count; i++)
-                {
-                    diceD20[i].GetComponent<Renderer>().material = matD20[5];
-                }
-                break;
-            default:
-                for (int i = 0; i < diceD4.Count; i++)
-                {
-                    diceD4[i].GetComponent<Renderer>().material = matD4[0];
-                }
-                for (int i = 0; i < diceD6.Count; i++)
-                {
-                    diceD6[i].GetComponent<Renderer>().material = matD6[0];
-                }
-                for (int i = 0; i < diceD8.Count; i++)
-                {
-                    diceD8[i].GetComponent<Renderer>().material = matD8[0];
-                }
-                for (int i = 0; i < diceD10.Count; i++)
-                {
-                    diceD10[i].GetComponent<Renderer>().material = matD10[0];
-                }
-                for (int i = 0; i < diceD12.Count; i++)
-                {
-                    diceD12[i].GetComponent<Renderer>().material = matD12[0];
-                }
-                for (int i = 0; i < diceD20.Count; i++)
-                {
-                    diceD20[i].GetComponent<Renderer>().material = matD20[0];
-                }
-                break;
+            dice.GetComponent<Renderer>().material = material;
+        }
+    }
+
+    public void FindAllDice()
+    {
+        diceD4.Clear();
+        diceD6.Clear();
+        diceD8.Clear();
+        diceD10.Clear();
+        diceD12.Clear();
+        diceD20.Clear();
+
+        // Buscar objetos con el script DiceType
+        var allDice = FindObjectsOfType<DiceType>();
+
+        // Filtrar por tipo y agregarlos a sus respectivas listas
+        foreach (var dice in allDice)
+        {
+            switch (dice.GetDiceType())
+            {
+                case DiceType.Type.D4:
+                    diceD4.Add(dice.gameObject);
+                    break;
+                case DiceType.Type.D6:
+                    diceD6.Add(dice.gameObject);
+                    break;
+                case DiceType.Type.D8:
+                    diceD8.Add(dice.gameObject);
+                    break;
+                case DiceType.Type.D10:
+                    diceD10.Add(dice.gameObject);
+                    break;
+                case DiceType.Type.D12:
+                    diceD12.Add(dice.gameObject);
+                    break;
+                case DiceType.Type.D20:
+                    diceD20.Add(dice.gameObject);
+                    break;
             }
         }
 
+        Debug.Log($"D4: {diceD4.Count}, D6: {diceD6.Count}, D8: {diceD8.Count}, D10: {diceD10.Count}, D12: {diceD12.Count}, D20: {diceD20.Count}");
+    }
 
+    //public int GetTheme() { return theme; }
+    //public int GetThemeDice() { return themeDice; }
 }
+
+
