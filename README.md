@@ -22,6 +22,7 @@ You can role them automatically or with the mobile accelerometer, with a ‘shak
 
 Dices
 [Asset 3D Dices](https://assetstore.unity.com/packages/3d/environments/collection-dice-set-for-role-playing-games-202821)
+[Outline Asset](https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488?srsltid=AfmBOopiXLVIuzROWesWU3LO7sjICWnZ_DL4_5XrJdqev0I-FsQgr5hu)
 
 Icons:
 https://icons8.com/icon/12491/reset
