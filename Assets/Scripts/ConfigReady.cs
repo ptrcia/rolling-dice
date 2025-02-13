@@ -39,6 +39,18 @@ public class ConfigReady : MonoBehaviour
         Debug.Log("Loaded: isAuto(" + isAutoValue + ") isShake(" + isShakeValue + ") isSimulated(" + isSimulatedValue + ")");
     }
 
+    private void Update()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                // Insert Code Here (I.E. Load Scene, Etc)
+                Application.Quit();
+            }
+        }
+    }
+
     private void OnAutoToggleChanged()
     {
         if (autoToggle.isOn)

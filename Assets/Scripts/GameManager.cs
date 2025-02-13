@@ -1,9 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     //[serializeField] RollDices rollDices;
     [SerializeField] GameObject info;
+
+
+    private void Update()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
+    }
     public void ChangeScene(int sceneIndex)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
