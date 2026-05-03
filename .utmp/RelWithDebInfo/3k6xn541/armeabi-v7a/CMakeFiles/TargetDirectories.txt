@@ -1,0 +1,5 @@
+C:/Users/Patricia/Documents/GithubRepository/rolling-dice/.utmp/RelWithDebInfo/3k6xn541/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Patricia/Documents/GithubRepository/rolling-dice/.utmp/RelWithDebInfo/3k6xn541/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/Patricia/Documents/GithubRepository/rolling-dice/.utmp/RelWithDebInfo/3k6xn541/armeabi-v7a/GameActivity/CMakeFiles/game.dir
+C:/Users/Patricia/Documents/GithubRepository/rolling-dice/.utmp/RelWithDebInfo/3k6xn541/armeabi-v7a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/Patricia/Documents/GithubRepository/rolling-dice/.utmp/RelWithDebInfo/3k6xn541/armeabi-v7a/GameActivity/CMakeFiles/rebuild_cache.dir
